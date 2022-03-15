@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FileShare- An easy way to share files.</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="upload-section">
+      <div class="drop-zone">
+        <div class="icon-container">
+          <img
+            class="center"
+            src="./assets/file.svg"
+            alt="file-icon"
+            draggable="false"
+          />
+          <img
+            class="left"
+            src="./assets/file.svg"
+            alt="file-icon"
+            draggable="false"
+          />
+          <img
+            class="right"
+            src="./assets/file.svg"
+            alt="file-icon"
+            draggable="false"
+          />
+        </div>
+        <input type="file" name="uploaded_file" id="file-input" hidden>
+        <div class="message">
+          Drop your files here or,&nbsp;<span class="browseBtn" onclick="handleBrowse()">browse</span>
+        </div>
+      </div>
+    </section>
+    <!-- <section>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, alias?</p>
+  </section> -->
+  <script src="index.js"></script>
+  <script src="route/index.js"></script>
+  </body>
+</html>
