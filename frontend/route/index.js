@@ -1,3 +1,0 @@
-const handleBrowse = () => {
-  fileInput.click();
-};
