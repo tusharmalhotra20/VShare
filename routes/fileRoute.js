@@ -9,7 +9,7 @@ const { v4: uuid4 } = require("uuid");
 let storage = multer.diskStorage({
   // Where to store the file?
   // cb is a callback func() first parameter of cb is used to report error -> which is defined null here, and second parameter defines where to store the files -> in uploads folder
-  destination: (req, file, cb) => cb(null, "backend/uploads/"),
+  destination: (req, file, cb) => cb(null, "uploads/"),
 
   // We have to generate a unique name for each and every file, to avoid mixing of files.
   filename: (req, file, cb) => {
@@ -21,16 +21,17 @@ let storage = multer.diskStorage({
   },
 });
 
-let upload = multer({ storage, limits: { fileSize: 1000000 * 100 } }).single(
+let upload = multer({ storage, limits: { fileSize: 1000000 } }).single(
   "uploaded_file"
 ); //100mb
 // only a single file is allowed to upload at a time.
-
+// console.log(upload.storage);
 // "file" field in req.file is added by the multer middleware to req object.
 router.post("/", (req, res) => {
   // Store file
   upload(req, res, async (err) => {
     // Before storing validate the request
+    // console.log(req.file);
     if (!req.file) {
       return res.json({ error: "Error occurred" });
     }
@@ -82,7 +83,7 @@ router.post("/send", async (req, res) => {
   sendMail({
     from: emailFrom,
     to: emailTo,
-    subject: "FileShare- file sharing",
+    subject: "VShare- share your files",
     text: `${emailFrom} shared a file with you.`,
     html: require("../services/emailTemplate")({
       emailFrom: emailFrom,

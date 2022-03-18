@@ -2,5 +2,5 @@
 notes.txt
 uploads/*
 !uploads/.gitkeep
-/node_modules/
+node_modules
 .DS_Store

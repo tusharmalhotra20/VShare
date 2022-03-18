@@ -11,6 +11,7 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 
 body,
@@ -19,6 +20,10 @@ body,
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+body {
+  flex-direction: row;
 }
 
 .upload-section {
@@ -185,7 +190,6 @@ p {
   justify-content: space-between;
   margin-bottom: 5px;
   width: 400px;
-  
 }
 
 .email-container label {
@@ -211,4 +215,32 @@ p {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.toast {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 60px);
+  transition: transform ease-in-out 0.2s;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #03a9f4;
+  color: #fff;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+  font-size: 18px;
+}
+
+.upload-file {
+  background: url("./assets/undraw_add_files.svg") no-repeat 250px;
+  background-size: contain;
+  height: 50vh;
+  width: 50vw;
+}
+
+@media screen and (max-width: 900px) {
+  .upload-file {
+    display: none;
+  }
 }

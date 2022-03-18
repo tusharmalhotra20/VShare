@@ -13,7 +13,7 @@ const sendMail = async ({ from, to, subject, text, html }) => {
   });
 
   let info = await transporter.sendMail({
-    from: `FileShare <${from}>`,
+    from: `VShare <${from}>`,
     to,
     subject,
     text,
