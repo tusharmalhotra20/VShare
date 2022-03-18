@@ -4,19 +4,34 @@
     <meta charset="UTF-8" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Download | FileShare - File Sharing Made Easy</title>
+    <title>Download | VShare - An easy way to share files</title>
     <link rel="stylesheet" href="/css/style.css" />
   </head>
 
   <body>
-  
-    <img src="/img/logo.png" alt="Inshare logo" class="logo" />
-
+    <!-- <img src="/img/logo.png" alt="Vshare logo" class="logo" /> -->
+    <a
+      href="https://vshare-files.herokuapp.com"
+      style="text-decoration: none; color: black"
+    >
+      <h1
+        style="position: absolute; top: 0; border: 0; left: 95px"
+        aria-hidden="true"
+      >
+        VShare
+      </h1>
+      <p
+        style="position: absolute; top: 50px; border: 0; left: 95px"
+        aria-hidden="true"
+      >
+        An easy way to share files
+      </p></a
+    >
     <section class="download">
       <img
         class="download__icon"
         src="/img/download-sd.svg"
-        alt="inshare-download"
+        alt="Vshare-download"
       />
       <% if(locals.error){ %>
       <h4><%= locals.error %> 😏</h4>
