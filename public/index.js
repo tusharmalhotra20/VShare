@@ -13,9 +13,9 @@ const toast = document.querySelector(".toast");
 
 const maxAllowedSize = 1024 * 1024; // 1mb
 
-const baseURL = "https://vshare-files.herokuapp.com";
-const uploadURL = `${baseURL}/api/files`;
-const emailURL = `${baseURL}/api/files/send`;
+// const baseURL = "https://vshare-files.herokuapp.com";
+const uploadURL = `/api/files`;
+const emailURL = `/api/files/send`;
 
 dropZone.addEventListener("dragover", (event) => {
   event.preventDefault();
