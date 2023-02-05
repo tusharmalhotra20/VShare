@@ -7,12 +7,9 @@ const app = express();
 // Cors
 const corsOptions = {
   origin: process.env.ALLOWED_CLIENTS.split(","),
-  // ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:3300']
 };
 
 app.use(cors(corsOptions));
-
-connectDB();
 
 app.use(express.json());
 
@@ -40,7 +37,7 @@ app.use("/files/download", require("./routes/downloadRoute.js"));
 
 const __dirname1 = path.resolve();
 if (process.env.NODE_ENV === "production") {
-  app.get("*", (req, res) => {
+  app.get("*", (req, res) => { 
     res.sendFile(path.join(__dirname1, "public/index.html"));
   });
 } else {
@@ -52,6 +49,12 @@ if (process.env.NODE_ENV === "production") {
 // --------------------------DEPLOYMENT------------------------------
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server started on PORT ${PORT}`);
+
+app.listen(PORT, async () => {
+  try {
+    await connectDB();
+    console.log(`Server started on PORT ${PORT}`);
+  } catch (err) {
+    console.error(err.message);
+  }
 });

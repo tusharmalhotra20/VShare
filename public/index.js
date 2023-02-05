@@ -55,13 +55,13 @@ browseBtn.addEventListener("click", () => {
 copyBtn.addEventListener("click", (event) => {
   fileURLInput.select();
   navigator.clipboard
-  .writeText(fileURLInput.value)
-  .then(() => {
-    showToast("Link copied", "#19A554");
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+    .writeText(fileURLInput.value)
+    .then(() => {
+      showToast("Link copied", "#19A554");
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 });
 
 const resetFileInput = () => {
@@ -91,7 +91,6 @@ const uploadFile = () => {
   // initializes an XMLHttpRequest()
   const xhr = new XMLHttpRequest();
 
-  //
   xhr.onreadystatechange = () => {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       // console.log(xhr.response); // URL of the uploaded_file
