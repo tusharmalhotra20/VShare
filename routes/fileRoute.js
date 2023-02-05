@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
   // Store file
   upload(req, res, async (err) => {
     // Before storing validate the request
-    // console.log(req.file);
+    console.log(req.file);
     if (!req.file) {
       return res.json({ error: "Error occurred" });
     }
