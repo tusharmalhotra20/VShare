@@ -37,7 +37,7 @@ app.use("/files/download", require("./routes/downloadRoute.js"));
 
 const __dirname1 = path.resolve();
 if (process.env.NODE_ENV === "production") {
-  app.get("*", (req, res) => { 
+  app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname1, "public/index.html"));
   });
 } else {
@@ -50,11 +50,8 @@ if (process.env.NODE_ENV === "production") {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, async () => {
-  try {
-    await connectDB();
+connectDB().then(() => {
+  app.listen(PORT, () => {
     console.log(`Server started on PORT ${PORT}`);
-  } catch (err) {
-    console.error(err.message);
-  }
+  });
 });
