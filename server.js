@@ -39,10 +39,9 @@ app.use("/files/download", require("./routes/downloadRoute.js"));
 // --------------------------DEPLOYMENT------------------------------
 
 const __dirname1 = path.resolve();
-// console.log(path.resolve(__dirname1, "frontend", "index.html"));
 if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname1, "pubic/index.html"));
+    res.sendFile(path.join(__dirname1, "public/index.html"));
   });
 } else {
   app.get("/", (req, res) => {

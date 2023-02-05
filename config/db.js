@@ -5,10 +5,7 @@ require("dotenv").config();
 const connectDB = async () => {
   // Storing the established connection into a "connect" constant, as we are required to call some methods upon this connection.
   try {
-    const connect = await mongoose.connect(process.env.MONGO_CONNECTION_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const connect = await mongoose.connect(process.env.MONGO_CONNECTION_URL);
     console.log(`Connected to Database: ${connect.connection.host}`);
   } catch (error) {
     console.error(`Failed to connect with database: \n${error}`);
