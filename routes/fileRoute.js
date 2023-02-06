@@ -1,4 +1,5 @@
 const router = require("express").Router();
+
 // multer is middleware, used to handle file uploads.
 const multer = require("multer");
 const path = require("path");
@@ -21,12 +22,13 @@ let storage = multer.diskStorage({
   },
 });
 
-let upload = multer({ storage, limits: { fileSize: 1000000 } }).single(
+let upload = multer({ storage, limits: { fileSize: 1000000 * 100 } }).single(
   "uploaded_file"
 ); //100mb
 // only a single file is allowed to upload at a time.
 // console.log(upload.storage);
 // "file" field in req.file is added by the multer middleware to req object.
+
 router.post("/", (req, res) => {
   // Store file
   upload(req, res, async (err) => {
