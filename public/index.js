@@ -13,7 +13,7 @@ const toast = document.querySelector(".toast");
 
 const maxAllowedSize = 1024 * 1024; // 1mb
 
-// const baseURL = "https://vshare-files.herokuapp.com";
+// const baseURL = "https://vshare-jlmy.onrender.com/";
 const uploadURL = `/api/files`;
 const emailURL = `/api/files/send`;
 
