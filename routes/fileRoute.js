@@ -22,38 +22,37 @@ let storage = multer.diskStorage({
   },
 });
 
-let upload = multer({ storage, limits: { fileSize: 1000000 * 100 } }).single(
+let upload = multer({ storage, limits: { fileSize: 1000000 } }).single(
   "uploaded_file"
-); //100mb
+); //1mb
 // only a single file is allowed to upload at a time.
 // console.log(upload.storage);
 // "file" field in req.file is added by the multer middleware to req object.
 
+// To Store file
 router.post("/", (req, res) => {
-  // Store file
   upload(req, res, async (err) => {
-    // Before storing validate the request
-    console.log(req.file);
+    // 1. validate the request
     if (!req.file) {
       return res.json({ error: "Error occurred" });
     }
     if (err) {
       return res.status(500).send({ error: err.message });
     }
-    // Store to Database
+    // 2. Store file info to Database
     // uuid is used so that every file can be identified uniquely in the database and no one can access any other file on the by entering the subsequent id. e.g. 5 then 6 and so on...
     const file = new File({
       filename: req.file.filename,
-      uuid: uuid4(),
+      uuid: uuid4(),  // to generate an unique download page link
       path: req.file.path,
       size: req.file.size,
     });
     const response = await file.save();
-    // console.log(response);
+
     return res.json({
       file: `${process.env.APP_BASE_URL}/files/${response.uuid}`,
     });
-    //http://localhost:5000/files/32654564-12544-54545646
+    //http://localhost:5000/files/32654564-12544-54545646 (unique download page link)
   });
 });
 
@@ -80,7 +79,6 @@ router.post("/send", async (req, res) => {
   const response = await file.save();
 
   // Send Email
-
   const sendMail = require("../services/emailService");
   sendMail({
     from: emailFrom,

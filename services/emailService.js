@@ -19,7 +19,7 @@ const sendMail = async ({ from, to, subject, text, html }) => {
     text,
     html,
   });
-//   console.log(info);
+  console.log(info);
 };
 
 module.exports = sendMail;

@@ -15,7 +15,7 @@ router.get("/:uuid", async (req, res) => {
     // console.log(filePath);
     res.download(filePath);
   } catch (error) {
-    console.error(error);
+    return res.render("download", { error: "Link has been expired." });
   }
 });
 
